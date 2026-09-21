@@ -79,8 +79,17 @@ export default function Contact() {
       </div>
 
       <div className="contact-grid">
-        {/* Left Column: Direct info details */}
-        <div className="contact-info glass-panel">
+        {/* Left Column: Direct info details as 3D LEGO Brick */}
+        <div className="contact-info glass-panel lego-brick-card brick-red">
+          <div className="lego-studs-top-row">
+            <span className="lego-brick-stud red" />
+            <span className="lego-brick-stud yellow" />
+            <span className="lego-brick-stud blue" />
+            <span className="lego-brick-stud red" />
+            <span className="lego-brick-stud yellow" />
+            <span className="lego-brick-stud blue" />
+          </div>
+
           <div className="lego-studs-strip">
             <span className="lego-stud-pill red" />
             <span className="lego-stud-pill yellow" />
@@ -133,8 +142,17 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Right Column: Dynamic Form */}
-        <div className="contact-form-wrap glass-panel">
+        {/* Right Column: Dynamic Form as 3D LEGO Build Station */}
+        <div className="contact-form-wrap glass-panel lego-brick-card brick-yellow">
+          <div className="lego-studs-top-row">
+            <span className="lego-brick-stud green" />
+            <span className="lego-brick-stud yellow" />
+            <span className="lego-brick-stud red" />
+            <span className="lego-brick-stud green" />
+            <span className="lego-brick-stud yellow" />
+            <span className="lego-brick-stud red" />
+          </div>
+
           <div className="lego-studs-strip">
             <span className="lego-stud-pill green" />
             <span className="lego-stud-pill yellow" />

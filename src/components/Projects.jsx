@@ -69,17 +69,39 @@ export default function Projects() {
     }
   ];
 
+  const brickThemes = [
+    {
+      themeClass: 'brick-blue',
+      studs: ['blue', 'green', 'yellow', 'blue', 'green', 'yellow', 'blue', 'green']
+    },
+    {
+      themeClass: 'brick-yellow',
+      studs: ['yellow', 'red', 'yellow', 'red', 'yellow', 'red', 'yellow', 'red']
+    },
+    {
+      themeClass: 'brick-red',
+      studs: ['red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue']
+    }
+  ];
+
   const Card = ({ project, index }) => {
+    const theme = brickThemes[index % brickThemes.length];
+
     return (
-      <div className="project-card glass-panel">
+      <div className={`project-card glass-panel lego-brick-card ${theme.themeClass}`}>
+        {/* Physical 3D Studs protruding ABOVE the card */}
+        <div className="lego-studs-top-row">
+          {theme.studs.map((color, sIdx) => (
+            <span key={sIdx} className={`lego-brick-stud ${color}`} />
+          ))}
+        </div>
+
         {/* LEGO Set Stud Strip */}
         <div className="lego-studs-strip">
           <span className="lego-stud-pill red" />
           <span className="lego-stud-pill yellow" />
           <span className="lego-stud-pill blue" />
           <span className="lego-stud-pill green" />
-          <span className="lego-stud-pill yellow" />
-          <span className="lego-stud-pill red" />
           <span className="lego-set-code">COLLECTOR SET #{index + 1}00</span>
         </div>
 

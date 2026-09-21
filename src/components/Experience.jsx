@@ -76,8 +76,15 @@ export default function Experience() {
                 {item.icon}
               </div>
 
-              {/* Timeline Box */}
-              <div className="timeline-card glass-panel">
+              {/* Timeline Box as 3D LEGO Brick */}
+              <div className={`timeline-card glass-panel lego-brick-card ${idx === 0 ? 'brick-yellow' : idx === 1 ? 'brick-blue' : 'brick-red'}`}>
+                <div className="lego-studs-top-row">
+                  <span className={`lego-brick-stud ${idx === 0 ? 'yellow' : idx === 1 ? 'blue' : 'red'}`} />
+                  <span className={`lego-brick-stud ${idx === 0 ? 'yellow' : idx === 1 ? 'blue' : 'red'}`} />
+                  <span className={`lego-brick-stud ${idx === 0 ? 'yellow' : idx === 1 ? 'blue' : 'red'}`} />
+                  <span className={`lego-brick-stud ${idx === 0 ? 'yellow' : idx === 1 ? 'blue' : 'red'}`} />
+                </div>
+
                 <div className="lego-studs-strip">
                   <span className="lego-stud-pill yellow" />
                   <span className="lego-stud-pill red" />

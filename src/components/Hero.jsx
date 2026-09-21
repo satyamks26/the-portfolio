@@ -73,11 +73,12 @@ export default function Hero() {
           </motion.p>
 
           {/* Compact Profile Chip */}
-          <motion.div variants={itemVariants} className="hero-profile-chip glass-panel">
-            <div className="chip-stud-indicator">
-              <span className="lego-stud-pill yellow" />
-              <span className="lego-stud-pill green" />
-              <span className="lego-stud-pill blue" />
+          <motion.div variants={itemVariants} className="hero-profile-chip glass-panel brick-yellow">
+            <div className="lego-studs-top-row">
+              <span className="lego-brick-stud yellow" />
+              <span className="lego-brick-stud green" />
+              <span className="lego-brick-stud blue" />
+              <span className="lego-brick-stud yellow" />
             </div>
             <div className="chip-content-wrap">
               <div className="chip-avatar-wrap">
@@ -95,7 +96,15 @@ export default function Hero() {
           </motion.div>
 
           {/* Terminal Console Block */}
-          <motion.div variants={itemVariants} className="hero-terminal glass-panel">
+          <motion.div variants={itemVariants} className="hero-terminal glass-panel brick-blue">
+            <div className="lego-studs-top-row">
+              <span className="lego-brick-stud red" />
+              <span className="lego-brick-stud yellow" />
+              <span className="lego-brick-stud green" />
+              <span className="lego-brick-stud blue" />
+              <span className="lego-brick-stud yellow" />
+              <span className="lego-brick-stud red" />
+            </div>
             <div className="terminal-header">
               <span className="lego-stud-pill red" />
               <span className="lego-stud-pill yellow" />

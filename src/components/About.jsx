@@ -56,7 +56,18 @@ export default function About() {
 
       <div className="about-grid">
         {/* Bio Card */}
-        <div className="about-bio glass-panel">
+        <div className="about-bio glass-panel lego-brick-card brick-red">
+          <div className="lego-studs-top-row">
+            <span className="lego-brick-stud red" />
+            <span className="lego-brick-stud yellow" />
+            <span className="lego-brick-stud blue" />
+            <span className="lego-brick-stud green" />
+            <span className="lego-brick-stud yellow" />
+            <span className="lego-brick-stud red" />
+            <span className="lego-brick-stud blue" />
+            <span className="lego-brick-stud green" />
+          </div>
+
           <div className="lego-studs-strip">
             <span className="lego-stud-pill red" />
             <span className="lego-stud-pill yellow" />
@@ -95,10 +106,17 @@ export default function About() {
           {skillCategories.map((cat, idx) => (
             <motion.div
               key={idx}
-              className={`skill-card glass-panel brick-theme-${cat.colorTheme}`}
+              className={`skill-card glass-panel lego-brick-card brick-theme-${cat.colorTheme}`}
               whileHover={{ y: -4 }}
               transition={{ type: 'spring', stiffness: 200 }}
             >
+              <div className="lego-studs-top-row">
+                <span className={`lego-brick-stud ${cat.studColor}`} />
+                <span className={`lego-brick-stud ${cat.studColor}`} />
+                <span className={`lego-brick-stud ${cat.studColor}`} />
+                <span className={`lego-brick-stud ${cat.studColor}`} />
+              </div>
+
               <div className="lego-studs-strip">
                 <span className={`lego-stud-pill ${cat.studColor}`} />
                 <span className={`lego-stud-pill ${cat.studColor}`} />
