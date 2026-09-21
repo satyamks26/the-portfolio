@@ -189,16 +189,21 @@ export default function Experience() {
         }
 
         .role-title {
+          font-family: var(--font-display);
           font-size: 1.35rem;
-          font-weight: 800;
+          font-weight: 900;
           color: #ffffff;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          text-shadow: 0 2px 0 #000000;
         }
 
         .company-name {
-          font-size: 14px;
+          font-size: 13px;
           color: var(--lego-yellow);
           font-family: var(--font-mono);
           font-weight: 700;
+          letter-spacing: 0.5px;
         }
 
         .period-badge {
@@ -206,25 +211,20 @@ export default function Experience() {
           align-items: center;
           gap: 6px;
           padding: 6px 14px;
-          background: #151820;
+          background: #141720;
           border: 1px solid rgba(255, 255, 255, 0.15);
+          border-top: 2px solid rgba(255, 255, 255, 0.3);
           border-radius: 6px;
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 11.5px;
           font-weight: 700;
           color: var(--lego-yellow);
-        }
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid var(--border-color);
-          border-radius: 20px;
-          font-size: 12px;
-          color: var(--text-secondary);
-          font-family: var(--font-mono);
+          box-shadow: 0 3px 0 #090a0d;
           white-space: nowrap;
         }
 
         .cal-icon {
-          color: var(--text-muted);
+          color: var(--lego-yellow);
         }
 
         .card-description {
@@ -244,7 +244,7 @@ export default function Experience() {
         }
 
         .card-details li::marker {
-          color: var(--accent-cyan);
+          color: var(--lego-yellow);
         }
 
         @media (max-width: 768px) {

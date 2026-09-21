@@ -174,9 +174,13 @@ export default function About() {
         }
 
         .about-bio h3 {
-          font-size: 1.8rem;
+          font-family: var(--font-display);
+          font-size: 1.85rem;
+          font-weight: 900;
           color: #ffffff;
-          font-weight: 800;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          text-shadow: 0 2px 0 var(--lego-red-shadow), 0 4px 0 #000000;
         }
 
         .about-bio p {
@@ -199,6 +203,18 @@ export default function About() {
           flex-direction: column;
           align-items: center;
           text-align: center;
+          background: #141720;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-top: 2px solid rgba(255, 255, 255, 0.3);
+          border-radius: 8px;
+          padding: 12px 8px;
+          box-shadow: 0 4px 0 #0a0b0f;
+          transition: transform 0.1s ease;
+        }
+
+        .stat-item:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 0 #0a0b0f;
         }
 
         .stat-num {
@@ -252,8 +268,11 @@ export default function About() {
 
         .skill-card-header h4 {
           font-size: 1.15rem;
-          font-weight: 800;
+          font-weight: 900;
+          font-family: var(--font-display);
           color: #ffffff;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
         }
 
         .cat-icon {

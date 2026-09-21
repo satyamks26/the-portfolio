@@ -90,11 +90,16 @@ export default function Navbar() {
   return (
     <nav className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-content glass-panel">
-        {/* LEGO Styled Logo */}
-        <div className="navbar-logo lego-logo-badge" onClick={() => scrollToSection('hero')}>
-          <span className="logo-bracket">&lt;</span>
-          <span className="logo-text">SATYAM</span>
-          <span className="logo-bracket">/&gt;</span>
+        {/* LEGO Styled Letter Tile Logo */}
+        <div className="navbar-logo-tiles" onClick={() => scrollToSection('hero')}>
+          <span className="lego-letter-tile yellow">&lt;</span>
+          <span className="lego-letter-tile">S</span>
+          <span className="lego-letter-tile">A</span>
+          <span className="lego-letter-tile">T</span>
+          <span className="lego-letter-tile">Y</span>
+          <span className="lego-letter-tile">A</span>
+          <span className="lego-letter-tile">M</span>
+          <span className="lego-letter-tile yellow">/&gt;</span>
         </div>
 
         {/* Desktop Nav Links */}
@@ -170,109 +175,99 @@ export default function Navbar() {
           box-shadow: 0 6px 0 #0a0c10, 0 12px 28px rgba(0, 0, 0, 0.6);
         }
 
-        .navbar-logo {
-          font-family: var(--font-display);
-          font-weight: 900;
-          font-size: 16px;
-          letter-spacing: 1px;
-          cursor: pointer;
+        .navbar-logo-tiles {
           display: flex;
           align-items: center;
-          gap: 4px;
-          padding: 6px 14px;
-          background: var(--lego-red);
-          border-radius: 8px;
-          border: 1.5px solid rgba(255, 255, 255, 0.35);
-          box-shadow: 0 3px 0 var(--lego-red-shadow), 0 5px 10px rgba(229, 37, 33, 0.4);
-          transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .navbar-logo:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 0 var(--lego-red-shadow), 0 8px 14px rgba(229, 37, 33, 0.5);
-        }
-
-        .navbar-logo:active {
-          transform: translateY(2px);
-          box-shadow: 0 1px 0 var(--lego-red-shadow);
-        }
-
-        .logo-bracket {
-          color: var(--lego-yellow);
-          font-weight: 800;
-        }
-
-        .logo-text {
-          color: #ffffff;
-          font-weight: 900;
+          gap: 2px;
+          cursor: pointer;
+          user-select: none;
         }
 
         .navbar-links {
           display: flex;
-          gap: 28px;
+          gap: 12px;
           align-items: center;
         }
 
         .nav-btn {
-          background: transparent;
-          border: none;
+          background: #141720;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-top: 2px solid rgba(255, 255, 255, 0.28);
+          border-radius: 6px;
           color: var(--text-secondary);
-          font-size: 14px;
+          font-family: var(--font-display);
+          font-size: 13px;
           font-weight: 700;
+          letter-spacing: 0.5px;
+          padding: 7px 16px;
+          box-shadow: 0 3px 0 #090a0d;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
           position: relative;
-          padding: 6px 4px;
-          transition: color var(--transition-fast);
+          transition: transform 0.1s ease, color 0.15s ease, background 0.15s ease, box-shadow 0.1s ease;
           cursor: pointer;
         }
 
         .nav-btn:hover {
           color: var(--lego-yellow);
+          transform: translateY(-2px);
+          box-shadow: 0 5px 0 #090a0d;
         }
 
         .nav-btn.active {
-          color: #ffffff;
-          font-weight: 800;
+          color: #111317;
+          background: var(--lego-yellow);
+          border-color: rgba(255, 255, 255, 0.4);
+          box-shadow: 0 3px 0 var(--lego-yellow-shadow);
+        }
+
+        .nav-btn:active {
+          transform: translateY(2px);
+          box-shadow: 0 1px 0 #090a0d;
         }
 
         .nav-btn-stud {
-          position: absolute;
-          bottom: -4px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 8px;
-          height: 8px;
-          background: var(--lego-yellow);
+          width: 7px;
+          height: 7px;
+          background: #111317;
           border-radius: 50%;
-          box-shadow: 0 2px 0 var(--lego-yellow-shadow), 0 0 8px rgba(254, 203, 0, 0.6);
+          display: inline-block;
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
         }
 
         .navbar-socials {
           display: flex;
-          gap: 16px;
+          gap: 10px;
           align-items: center;
         }
 
         .social-icon {
-          color: var(--text-secondary);
-          width: 32px;
-          height: 32px;
           display: flex;
           align-items: center;
           justify-content: center;
+          width: 36px;
+          height: 36px;
           border-radius: 8px;
           background: #252a36;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 2px 0 #101217;
-          transition: all 0.15s ease;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          box-shadow: 0 3px 0 #0e1015;
+          color: var(--text-primary);
+          transition: transform 0.1s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.1s ease;
         }
 
         .social-icon:hover {
-          color: #ffffff;
-          background: var(--lego-blue);
-          border-color: rgba(255, 255, 255, 0.3);
+          color: var(--lego-yellow);
+          border-color: var(--lego-yellow);
           transform: translateY(-2px);
-          box-shadow: 0 4px 0 var(--lego-blue-shadow);
+          box-shadow: 0 5px 0 #0e1015, 0 6px 14px rgba(254, 203, 0, 0.3);
         }
+
+        .social-icon:active {
+          transform: translateY(2px);
+          box-shadow: 0 1px 0 #0e1015;
+        }
+
 
         .mobile-toggle {
           display: none;

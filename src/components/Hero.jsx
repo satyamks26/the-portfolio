@@ -210,27 +210,35 @@ export default function Hero() {
         }
 
         .hero-title {
-          font-size: 3.8rem;
+          font-family: var(--font-display);
+          font-size: 3.5rem;
           font-weight: 900;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.02em;
           color: #ffffff;
-          line-height: 1.1;
+          line-height: 1.12;
+          text-transform: uppercase;
+          text-shadow: 0 3px 0 #64748b, 0 6px 0 #0f172a, 0 8px 0 #000000;
         }
 
         .hero-name-gradient {
-          background: linear-gradient(135deg, #ffffff 0%, var(--lego-yellow) 55%, var(--lego-orange) 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.5));
+          display: inline-block;
+          color: var(--lego-yellow) !important;
+          -webkit-text-fill-color: var(--lego-yellow) !important;
+          text-shadow: 
+            0 3px 0 var(--lego-yellow-shadow),
+            0 6px 0 #735400,
+            0 8px 0 #000000;
         }
 
         .hero-subtitle {
-          font-size: 1.7rem;
-          color: var(--text-primary);
-          font-weight: 700;
+          font-family: var(--font-display);
+          font-size: 1.6rem;
+          color: #f1f5f9;
+          font-weight: 800;
           line-height: 1.25;
-          letter-spacing: -0.01em;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          text-shadow: 0 2px 0 #0284c7, 0 4px 0 #000000;
         }
 
         .hero-description {

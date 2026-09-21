@@ -234,8 +234,13 @@ export default function Contact() {
         }
 
         .contact-info h3 {
-          font-size: 1.8rem;
-          color: var(--text-primary);
+          font-family: var(--font-display);
+          font-size: 1.85rem;
+          font-weight: 900;
+          color: #ffffff;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          text-shadow: 0 2px 0 var(--lego-red-shadow), 0 4px 0 #000000;
         }
 
         .contact-info p {
@@ -358,20 +363,23 @@ export default function Contact() {
         }
 
         .input-group label {
-          font-size: 12px;
-          font-weight: 600;
-          color: var(--text-secondary);
+          font-family: var(--font-display);
+          font-size: 11.5px;
+          font-weight: 700;
+          color: var(--lego-yellow);
           text-transform: uppercase;
-          letter-spacing: 0.5px;
+          letter-spacing: 0.8px;
         }
 
         .form-input {
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid var(--border-color);
+          background: #12141c;
+          border: 1.5px solid rgba(255, 255, 255, 0.14);
+          border-top: 2px solid rgba(0, 0, 0, 0.6);
           border-radius: 8px;
           padding: 14px 18px;
           color: var(--text-primary);
           font-size: 14.5px;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
           transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
         }
 
@@ -381,8 +389,8 @@ export default function Contact() {
 
         .form-input:focus {
           border-color: var(--lego-yellow);
-          box-shadow: 0 0 10px rgba(254, 203, 0, 0.3);
-          background: rgba(255, 255, 255, 0.05);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 12px rgba(254, 203, 0, 0.35);
+          background: #161824;
         }
 
         .form-textarea {
@@ -393,9 +401,12 @@ export default function Contact() {
           align-self: flex-start;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 14px 32px;
+          gap: 10px;
+          padding: 15px 36px;
           font-size: 15px;
+          font-family: var(--font-display);
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
         }
 
         .btn-send-icon {

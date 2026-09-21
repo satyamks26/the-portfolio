@@ -308,11 +308,14 @@ export default function Projects() {
         }
 
         .card-title {
-          font-size: 1.55rem;
-          font-weight: 800;
+          font-size: 1.6rem;
+          font-weight: 900;
           font-family: var(--font-display);
           color: #ffffff;
           line-height: 1.2;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          text-shadow: 0 2px 0 #0284c7, 0 4px 0 #000000;
         }
 
         .card-desc {
@@ -339,12 +342,15 @@ export default function Projects() {
         }
 
         .card-highlights li::before {
-          content: '■';
+          content: '';
           position: absolute;
           left: 0;
-          color: var(--lego-yellow);
-          font-size: 9px;
-          top: 1px;
+          top: 5px;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--lego-yellow);
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 1.5px 0 var(--lego-yellow-shadow);
         }
 
         .card-tech {
@@ -356,26 +362,35 @@ export default function Projects() {
         }
 
         .lego-brick-tag {
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
-          padding: 4px 10px;
+          padding: 5px 12px 5px 8px;
           border-radius: 6px;
-          background: #252a36;
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          background: #202430;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          border-top: 2px solid rgba(255, 255, 255, 0.35);
           color: #f1f5f9;
           font-family: var(--font-mono);
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          box-shadow: 0 2px 0 #101217;
+          box-shadow: 0 3px 0 #0c0d12;
+          transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .lego-brick-tag:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 0 #0c0d12;
+          border-color: var(--lego-yellow);
         }
 
         .tech-tag-stud {
-          width: 5px;
-          height: 5px;
+          width: 7px;
+          height: 7px;
           border-radius: 50%;
           background: var(--lego-yellow);
           display: inline-block;
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.4);
         }
 
         .card-actions {
