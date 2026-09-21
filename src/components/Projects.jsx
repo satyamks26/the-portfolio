@@ -69,13 +69,22 @@ export default function Projects() {
     }
   ];
 
-  const Card = ({ project }) => {
+  const Card = ({ project, index }) => {
     return (
       <div className="project-card glass-panel">
+        {/* LEGO Set Stud Strip */}
+        <div className="lego-studs-strip">
+          <span className="lego-stud-pill red" />
+          <span className="lego-stud-pill yellow" />
+          <span className="lego-stud-pill blue" />
+          <span className="lego-stud-pill green" />
+          <span className="lego-set-code">SET #{index + 1}00 · MASTER BUILDER</span>
+        </div>
+
         <div className="card-image-wrap">
           <img src={project.image} alt={project.title} className="card-img" />
           <div className="card-live-badge">
-            <span className="live-dot" /> Live
+            <span className="live-dot" /> Live Set
           </div>
         </div>
         <div className="card-body">
@@ -93,7 +102,10 @@ export default function Projects() {
 
           <div className="card-tech">
             {project.tech.map((t, idx) => (
-              <span key={idx} className="tech-tag">{t}</span>
+              <span key={idx} className="tech-tag lego-brick-tag">
+                <span className="tech-tag-stud" />
+                {t}
+              </span>
             ))}
           </div>
           <div className="card-actions">
@@ -126,13 +138,13 @@ export default function Projects() {
       <div className="radial-glow" style={{ top: '20%', left: '40%' }} />
 
       <div className="section-header">
-        <h2 className="section-title text-gradient">Featured Work</h2>
+        <h2 className="section-title text-gradient">Featured Work & Shipped Sets</h2>
         <div className="section-underline" />
       </div>
 
       <div className="projects-grid">
-        {projectsData.map((project) => (
-          <Card key={project.id} project={project} />
+        {projectsData.map((project, index) => (
+          <Card key={project.id} project={project} index={index} />
         ))}
       </div>
 
@@ -169,29 +181,61 @@ export default function Projects() {
           margin-top: 20px;
         }
 
+
         .project-card {
-          border-radius: 16px !important;
+          border-radius: 14px !important;
           overflow: hidden;
           display: flex;
           flex-direction: column;
-          background: var(--glass-bg);
-          border: 1px solid var(--border-color);
+          background: #1c202a;
+          border: 2px solid rgba(255, 255, 255, 0.14);
+          border-top: 2px solid rgba(255, 255, 255, 0.35);
           position: relative;
-          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+          box-shadow: 0 6px 0 #0c0e12, 0 14px 28px rgba(0, 0, 0, 0.5);
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .project-card:hover {
-          transform: translateY(-6px);
-          border-color: var(--accent-cyan);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+          transform: translateY(-5px);
+          border-color: var(--lego-yellow);
+          box-shadow: 0 10px 0 #0c0e12, 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .lego-studs-strip {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 18px;
+          background: #151820;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+        }
+
+        .lego-stud-pill {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          box-shadow: inset 0 1.5px 1.5px rgba(255, 255, 255, 0.5), 0 1.5px 2px rgba(0, 0, 0, 0.4);
+        }
+        .lego-stud-pill.red { background: var(--lego-red); }
+        .lego-stud-pill.yellow { background: var(--lego-yellow); }
+        .lego-stud-pill.blue { background: var(--lego-blue); }
+        .lego-stud-pill.green { background: var(--lego-green); }
+
+        .lego-set-code {
+          margin-left: auto;
+          font-family: var(--font-mono);
+          font-size: 10.5px;
+          font-weight: 800;
+          color: var(--lego-yellow);
+          letter-spacing: 0.8px;
         }
 
         .card-image-wrap {
           height: 220px;
           position: relative;
           overflow: hidden;
-          background: #0f1117;
-          border-bottom: 1px solid var(--border-color);
+          background: #111318;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.4);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -206,7 +250,7 @@ export default function Projects() {
         }
 
         .project-card:hover .card-img {
-          transform: scale(1.03);
+          transform: scale(1.04);
         }
 
         .card-live-badge {
@@ -216,30 +260,29 @@ export default function Projects() {
           display: flex;
           align-items: center;
           gap: 6px;
-          background: rgba(12, 13, 18, 0.85);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          padding: 4px 10px;
-          border-radius: 20px;
-          font-size: 10.5px;
+          background: #151820;
+          border: 1.5px solid var(--lego-green);
+          padding: 4px 12px;
+          border-radius: 6px;
+          font-size: 11px;
           font-family: var(--font-mono);
-          color: #f3f4f6;
-          font-weight: 600;
+          color: #ffffff;
+          font-weight: 700;
           letter-spacing: 0.5px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 0 #0a0b0e;
           z-index: 2;
         }
 
         .live-dot {
-          width: 6px;
-          height: 6px;
+          width: 7px;
+          height: 7px;
           border-radius: 50%;
-          background: #10b981;
-          box-shadow: 0 0 6px #10b981;
+          background: var(--lego-green);
+          box-shadow: 0 0 6px var(--lego-green);
         }
 
         .card-body {
-          padding: 26px 24px;
+          padding: 24px 22px;
           display: flex;
           flex-direction: column;
           flex-grow: 1;
@@ -255,24 +298,25 @@ export default function Projects() {
 
         .card-subtitle {
           font-size: 11.5px;
-          color: var(--accent-blue);
+          color: var(--lego-yellow);
           font-family: var(--font-mono);
+          font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
 
         .card-title {
-          font-size: 1.45rem;
-          font-weight: 600;
+          font-size: 1.55rem;
+          font-weight: 800;
           font-family: var(--font-display);
-          color: var(--text-primary);
+          color: #ffffff;
           line-height: 1.2;
         }
 
         .card-desc {
           font-size: 13.5px;
           color: var(--text-secondary);
-          line-height: 1.55;
+          line-height: 1.6;
         }
 
         .card-highlights {
@@ -281,7 +325,7 @@ export default function Projects() {
           margin: 4px 0 8px 0;
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 8px;
         }
 
         .card-highlights li {
@@ -289,15 +333,16 @@ export default function Projects() {
           line-height: 1.45;
           color: var(--text-secondary);
           position: relative;
-          padding-left: 14px;
+          padding-left: 18px;
         }
 
         .card-highlights li::before {
-          content: '•';
+          content: '■';
           position: absolute;
           left: 0;
-          color: var(--accent-blue);
-          font-weight: bold;
+          color: var(--lego-yellow);
+          font-size: 9px;
+          top: 1px;
         }
 
         .card-tech {
@@ -305,24 +350,37 @@ export default function Projects() {
           flex-wrap: wrap;
           gap: 8px;
           margin-top: auto;
-          padding-top: 10px;
+          padding-top: 12px;
         }
 
-        .tech-tag {
+        .lego-brick-tag {
           font-size: 11px;
+          font-weight: 700;
           padding: 4px 10px;
-          border-radius: 4px;
-          background: var(--bg-secondary);
-          border: 1px solid var(--border-color);
-          color: var(--text-secondary);
+          border-radius: 6px;
+          background: #252a36;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          color: #f1f5f9;
           font-family: var(--font-mono);
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          box-shadow: 0 2px 0 #101217;
+        }
+
+        .tech-tag-stud {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: var(--lego-yellow);
+          display: inline-block;
         }
 
         .card-actions {
           display: flex;
           gap: 12px;
           padding-top: 18px;
-          border-top: 1px solid var(--border-color);
+          border-top: 2px solid rgba(0, 0, 0, 0.35);
           margin-top: 8px;
           position: relative;
           z-index: 5;
@@ -336,22 +394,13 @@ export default function Projects() {
           flex: 1;
           padding: 10px 16px;
           font-size: 13px;
-          font-weight: 600;
+          font-weight: 800;
           text-decoration: none;
           text-align: center;
-          border-radius: 4px;
+          border-radius: 8px;
           cursor: pointer;
           position: relative;
           z-index: 6;
-          transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-        }
-
-        .card-btn:hover {
-          transform: translateY(-2px);
-        }
-
-        .card-btn:active {
-          transform: translateY(0);
         }
 
         @media (max-width: 1120px) {

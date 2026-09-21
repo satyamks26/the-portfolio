@@ -1,30 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Code2, Sparkles, Lightbulb, Gauge } from 'lucide-react';
+import { ArrowDown, Code2, Sparkles } from 'lucide-react';
 
 export default function Hero() {
-  const [selectedPaint, setSelectedPaint] = useState('#d4d5d9');
-  const [headlights, setHeadlights] = useState(true);
-
-  const paintOptions = [
-    { name: 'Chalk Gray', hex: '#d4d5d9', dotColor: '#d4d5d9' },
-    { name: 'Giallo Orion', hex: '#eab308', dotColor: '#eab308' },
-    { name: 'Guards Red', hex: '#e61919', dotColor: '#e61919' },
-    { name: 'Miami Blue', hex: '#00b4d8', dotColor: '#00b4d8' },
-    { name: 'Matte Carbon', hex: '#141416', dotColor: '#222329' },
-  ];
-
-  const handlePaintSelect = (hex) => {
-    setSelectedPaint(hex);
-    window.dispatchEvent(new CustomEvent('car-paint-change', { detail: hex }));
-  };
-
-  const handleHeadlightsToggle = () => {
-    const nextState = !headlights;
-    setHeadlights(nextState);
-    window.dispatchEvent(new CustomEvent('car-headlights-toggle', { detail: nextState }));
-  };
-
   const handleScrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -50,6 +28,10 @@ export default function Hero() {
     },
   };
 
+  const toggleLegoExplode = () => {
+    window.dispatchEvent(new CustomEvent('toggle-lego-explode'));
+  };
+
   return (
     <section id="hero" className="section hero-section">
       <div className="radial-glow" style={{ top: '15%', left: '5%' }} />
@@ -63,15 +45,17 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          {/* Engineering Badge */}
-          <motion.div variants={itemVariants} className="hero-badge glass-panel">
-            <Code2 size={13} className="badge-icon" />
-            <span>Full-Stack MERN · AI-Integrated Architecture</span>
+          {/* Master Builder Badge */}
+          <motion.div variants={itemVariants} className="hero-badge glass-panel lego-badge">
+            <span className="badge-stud red" />
+            <span className="badge-stud yellow" />
+            <span className="badge-stud blue" />
+            <span>Full-Stack MERN · Master Builder Architecture</span>
           </motion.div>
 
           {/* Title Header */}
           <motion.div variants={itemVariants} className="hero-title-group">
-            <span className="hero-eyebrow">PORTFOLIO & EXPERIMENTAL LAB</span>
+            <span className="hero-eyebrow">PORTFOLIO & MASTER BUILDER LAB</span>
             <h1 className="hero-title">
               Hi, I am <span className="hero-name-gradient">Kumar Satyam</span>
             </h1>
@@ -80,7 +64,7 @@ export default function Hero() {
           {/* Headline */}
           <motion.h2 variants={itemVariants} className="hero-subtitle">
             Engineering High-Performance Systems <br />
-            with Precision & Speed.
+            Brick by Brick.
           </motion.h2>
 
           {/* Executive Bio */}
@@ -109,20 +93,21 @@ export default function Hero() {
               <span className="dot dot-red" />
               <span className="dot dot-yellow" />
               <span className="dot dot-green" />
-              <span className="terminal-title">runtime.sh · v2.6.0</span>
+              <span className="dot dot-blue" />
+              <span className="terminal-title">master-builder.sh · v3.0.0</span>
             </div>
             <div className="terminal-body">
-              <p className="line"><span className="term-purple">const</span> engineer = <span className="term-cyan">new</span> MernArchitect(<span className="term-yellow">'Kumar Satyam'</span>);</p>
+              <p className="line"><span className="term-purple">const</span> engineer = <span className="term-cyan">new</span> MasterBuilder(<span className="term-yellow">'Kumar Satyam'</span>);</p>
               <p className="line">engineer.stack = [<span className="term-yellow">'React'</span>, <span className="term-yellow">'Node'</span>, <span className="term-yellow">'Express'</span>, <span className="term-yellow">'MongoDB'</span>, <span className="term-yellow">'Gemini Vision'</span>];</p>
               <p className="line">engineer.deployments = <span className="term-green">'3 Shipped Production Apps · 0 Downtime'</span>;</p>
-              <p className="line output">&gt; Core systems initialized. 60 FPS 3D studio live.</p>
+              <p className="line output">&gt; LEGO architecture loaded. 120 FPS procedural 3D active.</p>
             </div>
           </motion.div>
 
           {/* Action CTAs */}
           <motion.div variants={itemVariants} className="hero-actions">
             <button onClick={() => handleScrollTo('projects')} className="btn-primary interactive">
-              Explore Shipped Work
+              Explore Shipped Sets
             </button>
             <button onClick={() => handleScrollTo('contact')} className="btn-secondary interactive">
               Get In Touch
@@ -130,62 +115,17 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: 3D Automotive Showroom Stage Controls */}
-        <motion.div
-          className="showroom-stage-overlay"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+        {/* Right Column: 3D Canvas Visual Stage with Interactive Hint */}
+        <div 
+          className="hero-stage-canvas-spacer interactive"
+          onClick={toggleLegoExplode}
+          title="Click to Explode / Reassemble LEGO Bricks"
         >
-          {/* Top HUD Telemetry Panel */}
-          <div className="showroom-hud-header glass-panel">
-            <div className="hud-metric">
-              <Gauge size={14} className="hud-icon" />
-              <span>AVENTADOR V12 · 770 HP</span>
-            </div>
-            <div className="hud-pill">
-              <span className="hud-dot" />
-              <span>PBR CLEARCOAT ACTIVE</span>
-            </div>
+          <div className="hero-3d-hint-pill">
+            <span className="hint-brick-dot" />
+            <span>Click 3D Bricks to Explode & Snap!</span>
           </div>
-
-          {/* Interactive Paint Configurator Dock */}
-          <div className="showroom-config-dock glass-panel">
-            <div className="dock-label-group">
-              <span className="dock-label">BESPOKE CLEARCOAT PAINT</span>
-              <span className="dock-current">{paintOptions.find((p) => p.hex === selectedPaint)?.name}</span>
-            </div>
-
-            <div className="paint-swatches">
-              {paintOptions.map((opt) => (
-                <button
-                  key={opt.hex}
-                  onClick={() => handlePaintSelect(opt.hex)}
-                  className={`swatch-btn interactive ${selectedPaint === opt.hex ? 'active' : ''}`}
-                  title={opt.name}
-                >
-                  <span className="swatch-color" style={{ backgroundColor: opt.dotColor }} />
-                  {selectedPaint === opt.hex && <span className="swatch-ring" />}
-                </button>
-              ))}
-            </div>
-
-            <div className="dock-divider" />
-
-            {/* Headlights Toggle Switch */}
-            <button
-              onClick={handleHeadlightsToggle}
-              className={`headlights-btn interactive ${headlights ? 'active' : ''}`}
-            >
-              <Lightbulb size={14} className="headlights-icon" />
-              <span>{headlights ? 'LED DRL: ON' : 'LED DRL: OFF'}</span>
-            </button>
-          </div>
-
-          <div className="showroom-hint">
-            <span>Drag mouse to inspect vehicle clearcoat and reflections</span>
-          </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Down Scroll Prompt */}
@@ -224,20 +164,29 @@ export default function Hero() {
         .hero-badge {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 6px 14px;
-          border-radius: 20px !important;
+          gap: 10px;
+          padding: 8px 18px;
+          border-radius: 8px !important;
           font-family: var(--font-mono);
           font-size: 11px;
-          color: var(--accent-cyan);
-          border: 1px solid rgba(0, 240, 255, 0.25) !important;
-          background: rgba(0, 240, 255, 0.04) !important;
+          color: var(--lego-yellow);
+          border: 1.5px solid rgba(254, 203, 0, 0.4) !important;
+          background: #1c202a !important;
+          box-shadow: 0 4px 0 #0c0e12;
           letter-spacing: 0.5px;
+          font-weight: 700;
         }
 
-        .badge-icon {
-          color: var(--accent-cyan);
+        .badge-stud {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.5);
         }
+        .badge-stud.red { background: var(--lego-red); }
+        .badge-stud.yellow { background: var(--lego-yellow); }
+        .badge-stud.blue { background: var(--lego-blue); }
 
         .hero-title-group {
           display: flex;
@@ -247,30 +196,32 @@ export default function Hero() {
 
         .hero-eyebrow {
           font-family: var(--font-mono);
-          font-size: 11px;
-          color: var(--text-muted);
+          font-size: 11.5px;
+          color: var(--lego-yellow);
           letter-spacing: 1.5px;
+          font-weight: 700;
         }
 
         .hero-title {
-          font-size: 3.6rem;
-          font-weight: 800;
+          font-size: 3.8rem;
+          font-weight: 900;
           letter-spacing: -0.02em;
-          color: var(--text-primary);
+          color: #ffffff;
           line-height: 1.1;
         }
 
         .hero-name-gradient {
-          background: linear-gradient(135deg, #ffffff 0%, #00f0ff 70%, #3b82f6 100%);
+          background: linear-gradient(135deg, #ffffff 0%, var(--lego-yellow) 55%, var(--lego-orange) 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.5));
         }
 
         .hero-subtitle {
           font-size: 1.7rem;
           color: var(--text-primary);
-          font-weight: 600;
+          font-weight: 700;
           line-height: 1.25;
           letter-spacing: -0.01em;
         }
@@ -355,14 +306,15 @@ export default function Hero() {
           font-family: var(--font-mono);
         }
 
-        /* Terminal styling */
+        /* LEGO Styled Terminal */
         .hero-terminal {
           width: 100%;
           text-align: left;
           border-radius: 12px !important;
-          background: rgba(8, 9, 13, 0.75) !important;
-          border: 1px solid var(--border-color) !important;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          background: #181b24 !important;
+          border: 2px solid rgba(255, 255, 255, 0.12) !important;
+          border-top: 2px solid rgba(255, 255, 255, 0.28) !important;
+          box-shadow: 0 6px 0 #0b0c10, 0 14px 28px rgba(0, 0, 0, 0.5);
           overflow: hidden;
         }
 
@@ -370,25 +322,28 @@ export default function Hero() {
           display: flex;
           align-items: center;
           padding: 10px 14px;
-          background: rgba(255, 255, 255, 0.02);
-          border-bottom: 1px solid var(--border-color);
-          gap: 6px;
+          background: #14161e;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+          gap: 8px;
         }
 
         .dot {
-          width: 8px;
-          height: 8px;
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
+          box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 0 1.5px 2px rgba(0,0,0,0.4);
         }
-        .dot-red { background-color: #ef4444; }
-        .dot-yellow { background-color: #f59e0b; }
-        .dot-green { background-color: #10b981; }
+        .dot-red { background-color: var(--lego-red); }
+        .dot-yellow { background-color: var(--lego-yellow); }
+        .dot-green { background-color: var(--lego-green); }
+        .dot-blue { background-color: var(--lego-blue); }
 
         .terminal-title {
           font-family: var(--font-mono);
-          font-size: 10.5px;
-          color: var(--text-muted);
-          margin-left: 10px;
+          font-size: 11px;
+          color: var(--lego-yellow);
+          font-weight: 700;
+          margin-left: 8px;
         }
 
         .terminal-body {
@@ -398,15 +353,16 @@ export default function Hero() {
           line-height: 1.6;
         }
 
-        .term-purple { color: #c084fc; }
-        .term-cyan { color: #00f0ff; }
-        .term-yellow { color: #fde047; }
+        .term-purple { color: #f57d20; font-weight: 700; }
+        .term-cyan { color: #0084ff; font-weight: 700; }
+        .term-yellow { color: var(--lego-yellow); }
         .term-green { color: #4ade80; }
 
         .line.output {
-          color: var(--text-muted);
+          color: var(--lego-yellow);
           margin-top: 6px;
           font-style: italic;
+          font-weight: 600;
         }
 
         .hero-actions {
@@ -415,166 +371,58 @@ export default function Hero() {
           margin-top: 6px;
         }
 
-        /* Right Column Showroom Overlay Dock */
-        .showroom-stage-overlay {
+        /* Right Column 3D Canvas Stage with Interactive Hint */
+        .hero-stage-canvas-spacer {
+          min-height: 480px;
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
-          gap: 16px;
-          height: 520px;
-          justify-content: space-between;
-          padding: 20px 0;
-          pointer-events: none;
-        }
-
-        .showroom-hud-header {
-          display: flex;
+          justify-content: flex-end;
           align-items: center;
-          justify-content: space-between;
-          gap: 16px;
-          padding: 8px 16px;
-          border-radius: 30px !important;
-          pointer-events: auto;
-        }
-
-        .hud-metric {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 11px;
-          font-family: var(--font-mono);
-          color: var(--text-secondary);
-          letter-spacing: 0.5px;
-        }
-
-        .hud-icon {
-          color: var(--accent-cyan);
-        }
-
-        .hud-pill {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 10.5px;
-          font-family: var(--font-mono);
-          color: var(--accent-cyan);
-        }
-
-        .hud-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--accent-cyan);
-          box-shadow: 0 0 6px var(--accent-cyan);
-        }
-
-        /* Configurator Dock */
-        .showroom-config-dock {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          padding: 12px 20px;
-          border-radius: 30px !important;
-          pointer-events: auto;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .dock-label-group {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-          text-align: left;
-        }
-
-        .dock-label {
-          font-size: 9.5px;
-          color: var(--text-muted);
-          font-family: var(--font-mono);
-          letter-spacing: 0.8px;
-        }
-
-        .dock-current {
-          font-size: 12px;
-          font-weight: 700;
-          color: var(--text-primary);
-        }
-
-        .paint-swatches {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .swatch-btn {
-          position: relative;
-          width: 26px;
-          height: 26px;
-          border-radius: 50%;
-          border: none;
-          background: transparent;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          padding-bottom: 20px;
           cursor: pointer;
+          user-select: none;
         }
 
-        .swatch-color {
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          transition: transform 0.2s;
-        }
-
-        .swatch-btn:hover .swatch-color {
-          transform: scale(1.15);
-        }
-
-        .swatch-ring {
-          position: absolute;
-          inset: 0;
-          border: 1.5px solid var(--accent-cyan);
-          border-radius: 50%;
-          box-shadow: var(--glow-cyan);
-        }
-
-        .dock-divider {
-          width: 1px;
-          height: 24px;
-          background: var(--border-color);
-        }
-
-        .headlights-btn {
-          display: flex;
+        .hero-3d-hint-pill {
+          display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 6px 14px;
+          padding: 8px 18px;
           border-radius: 20px;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid var(--border-color);
-          color: var(--text-secondary);
+          background: #1c202a;
+          border: 2px solid var(--lego-yellow);
+          box-shadow: 0 4px 0 #000000, 0 8px 20px rgba(0, 0, 0, 0.5);
+          font-family: var(--font-mono);
           font-size: 11px;
-          font-family: var(--font-mono);
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .headlights-btn.active {
-          background: rgba(0, 240, 255, 0.1);
-          border-color: var(--accent-cyan);
-          color: var(--accent-cyan);
-          box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-        }
-
-        .headlights-icon {
-          color: inherit;
-        }
-
-        .showroom-hint {
-          font-family: var(--font-mono);
-          font-size: 10.5px;
-          color: var(--text-muted);
+          font-weight: 800;
+          color: #ffffff;
           letter-spacing: 0.5px;
+          animation: floatHint 2.4s ease-in-out infinite;
+          transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .hero-stage-canvas-spacer:hover .hero-3d-hint-pill {
+          border-color: var(--lego-red);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 0 #000000, 0 12px 24px rgba(229, 37, 33, 0.35);
+        }
+
+        .hero-stage-canvas-spacer:active .hero-3d-hint-pill {
+          transform: translateY(2px);
+          box-shadow: 0 1px 0 #000000;
+        }
+
+        .hint-brick-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--lego-red);
+          box-shadow: 0 0 6px var(--lego-red);
+        }
+
+        @keyframes floatHint {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
         }
 
         .hero-scroll-prompt {
@@ -609,9 +457,8 @@ export default function Hero() {
             grid-template-columns: 1fr;
             gap: 40px;
           }
-          .showroom-stage-overlay {
-            align-items: flex-start;
-            height: auto;
+          .hero-stage-canvas-spacer {
+            min-height: 260px;
           }
           .hero-title {
             font-size: 2.8rem;

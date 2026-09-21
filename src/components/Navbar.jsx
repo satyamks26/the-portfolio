@@ -90,10 +90,10 @@ export default function Navbar() {
   return (
     <nav className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-content glass-panel">
-        {/* Logo */}
-        <div className="navbar-logo" onClick={() => scrollToSection('hero')}>
+        {/* LEGO Styled Logo */}
+        <div className="navbar-logo lego-logo-badge" onClick={() => scrollToSection('hero')}>
           <span className="logo-bracket">&lt;</span>
-          <span className="logo-text text-gradient">SATYAM</span>
+          <span className="logo-text">SATYAM</span>
           <span className="logo-bracket">/&gt;</span>
         </div>
 
@@ -106,7 +106,7 @@ export default function Navbar() {
               className={`nav-btn ${activeSection === link.id ? 'active' : ''}`}
             >
               {link.label}
-              {activeSection === link.id && <span className="nav-btn-indicator" />}
+              {activeSection === link.id && <span className="nav-btn-stud" />}
             </button>
           ))}
         </div>
@@ -162,33 +162,55 @@ export default function Navbar() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 12px 28px;
-          border-radius: 40px !important;
-          border: 1px solid var(--border-color);
-          background: rgba(10, 11, 16, 0.7);
-          backdrop-filter: blur(20px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+          padding: 10px 24px;
+          border-radius: 14px !important;
+          border: 2px solid rgba(255, 255, 255, 0.14);
+          border-top: 2px solid rgba(255, 255, 255, 0.35);
+          background: #1c202a;
+          box-shadow: 0 6px 0 #0a0c10, 0 12px 28px rgba(0, 0, 0, 0.6);
         }
 
         .navbar-logo {
           font-family: var(--font-display);
-          font-weight: 800;
-          font-size: 20px;
-          letter-spacing: 0.5px;
-          cursor: none;
+          font-weight: 900;
+          font-size: 16px;
+          letter-spacing: 1px;
+          cursor: pointer;
           display: flex;
           align-items: center;
-          gap: 2px;
+          gap: 4px;
+          padding: 6px 14px;
+          background: var(--lego-red);
+          border-radius: 8px;
+          border: 1.5px solid rgba(255, 255, 255, 0.35);
+          box-shadow: 0 3px 0 var(--lego-red-shadow), 0 5px 10px rgba(229, 37, 33, 0.4);
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .navbar-logo:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 0 var(--lego-red-shadow), 0 8px 14px rgba(229, 37, 33, 0.5);
+        }
+
+        .navbar-logo:active {
+          transform: translateY(2px);
+          box-shadow: 0 1px 0 var(--lego-red-shadow);
         }
 
         .logo-bracket {
-          color: var(--text-muted);
-          font-weight: 400;
+          color: var(--lego-yellow);
+          font-weight: 800;
+        }
+
+        .logo-text {
+          color: #ffffff;
+          font-weight: 900;
         }
 
         .navbar-links {
           display: flex;
-          gap: 32px;
+          gap: 28px;
+          align-items: center;
         }
 
         .nav-btn {
@@ -196,30 +218,32 @@ export default function Navbar() {
           border: none;
           color: var(--text-secondary);
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 700;
           position: relative;
-          padding: 6px 0;
+          padding: 6px 4px;
           transition: color var(--transition-fast);
+          cursor: pointer;
         }
 
         .nav-btn:hover {
-          color: var(--accent-cyan);
+          color: var(--lego-yellow);
         }
 
         .nav-btn.active {
-          color: var(--text-primary);
-          font-weight: 600;
+          color: #ffffff;
+          font-weight: 800;
         }
 
-        .nav-btn-indicator {
+        .nav-btn-stud {
           position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
-          border-radius: 2px;
-          box-shadow: var(--glow-cyan);
+          bottom: -4px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 8px;
+          height: 8px;
+          background: var(--lego-yellow);
+          border-radius: 50%;
+          box-shadow: 0 2px 0 var(--lego-yellow-shadow), 0 0 8px rgba(254, 203, 0, 0.6);
         }
 
         .navbar-socials {
@@ -230,13 +254,24 @@ export default function Navbar() {
 
         .social-icon {
           color: var(--text-secondary);
-          transition: color var(--transition-fast), transform var(--transition-fast);
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          background: #252a36;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 2px 0 #101217;
+          transition: all 0.15s ease;
         }
 
         .social-icon:hover {
-          color: var(--accent-cyan);
+          color: #ffffff;
+          background: var(--lego-blue);
+          border-color: rgba(255, 255, 255, 0.3);
           transform: translateY(-2px);
-          filter: drop-shadow(var(--glow-cyan));
+          box-shadow: 0 4px 0 var(--lego-blue-shadow);
         }
 
         .mobile-toggle {

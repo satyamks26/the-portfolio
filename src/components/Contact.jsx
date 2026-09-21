@@ -59,12 +59,12 @@ export default function Contact() {
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
 
-      // Trigger high-fidelity celebratory confetti
+      // Trigger high-fidelity celebratory LEGO confetti
       confetti({
-        particleCount: 100,
-        spread: 70,
+        particleCount: 120,
+        spread: 80,
         origin: { y: 0.6 },
-        colors: ['#000000', '#7d7d7d', '#c5a880'],
+        colors: ['#e52521', '#fecb00', '#0055bf', '#009640', '#ffffff'],
       });
     }, 1200);
   };
@@ -74,70 +74,87 @@ export default function Contact() {
       <div className="radial-glow" style={{ bottom: '10%', right: '5%' }} />
 
       <div className="section-header">
-        <h2 className="section-title text-gradient">Get In Touch</h2>
+        <h2 className="section-title text-gradient">Get In Touch & Build Together</h2>
         <div className="section-underline" />
       </div>
 
       <div className="contact-grid">
         {/* Left Column: Direct info details */}
         <div className="contact-info glass-panel">
-          <h3>Let's build something epic</h3>
-          <p>
-            I am actively seeking full-time software engineering roles and internships — available immediately. If you are looking to hire a dedicated full-stack developer, want to discuss a project, or want to collaborate, feel free to reach out!
-          </p>
-
-          <div className="info-items">
-            <div className="info-item">
-              <Mail className="info-icon" size={18} />
-              <div>
-                <span>Email Me</span>
-                <a href="mailto:kumarsatyamsks20@gmail.com" className="interactive">kumarsatyamsks20@gmail.com</a>
-              </div>
-            </div>
-
-            <div className="info-item">
-              <Phone className="info-icon" size={18} />
-              <div>
-                <span>Direct Call</span>
-                <a href="tel:+919798718521" className="interactive">+91-9798718521</a>
-              </div>
-            </div>
-
-            <div className="info-item">
-              <MapPin className="info-icon" size={18} />
-              <div>
-                <span>Location</span>
-                <p>Jamshedpur, IN</p>
-              </div>
-            </div>
+          <div className="lego-studs-strip">
+            <span className="lego-stud-pill red" />
+            <span className="lego-stud-pill yellow" />
+            <span className="lego-stud-pill blue" />
+            <span className="lego-set-code">DIRECT TRANSMISSION</span>
           </div>
 
-          <div className="contact-socials-row">
-            <a href="https://linkedin.com/in/kumarsatyam887" target="_blank" rel="noopener noreferrer" className="social-btn glass-panel interactive">
-              <Linkedin size={18} />
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/satyamks26" target="_blank" rel="noopener noreferrer" className="social-btn glass-panel interactive">
-              <Github size={18} />
-              <span>GitHub</span>
-            </a>
+          <div className="contact-info-inner">
+            <h3>Let's build something epic</h3>
+            <p>
+              I am actively seeking full-time software engineering roles and internships — available immediately. If you are looking to hire a dedicated full-stack developer, want to discuss a project, or want to collaborate, feel free to reach out!
+            </p>
+
+            <div className="info-items">
+              <div className="info-item">
+                <Mail className="info-icon icon-red" size={18} />
+                <div>
+                  <span>Email Me</span>
+                  <a href="mailto:kumarsatyamsks20@gmail.com" className="interactive">kumarsatyamsks20@gmail.com</a>
+                </div>
+              </div>
+
+              <div className="info-item">
+                <Phone className="info-icon icon-yellow" size={18} />
+                <div>
+                  <span>Direct Call</span>
+                  <a href="tel:+919798718521" className="interactive">+91-9798718521</a>
+                </div>
+              </div>
+
+              <div className="info-item">
+                <MapPin className="info-icon icon-blue" size={18} />
+                <div>
+                  <span>Location</span>
+                  <p>Jamshedpur, IN</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="contact-socials-row">
+              <a href="https://linkedin.com/in/kumarsatyam887" target="_blank" rel="noopener noreferrer" className="social-btn interactive">
+                <Linkedin size={18} />
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/satyamks26" target="_blank" rel="noopener noreferrer" className="social-btn interactive">
+                <Github size={18} />
+                <span>GitHub</span>
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Right Column: Dynamic Form */}
         <div className="contact-form-wrap glass-panel">
-          {submitStatus === 'success' ? (
-            <div className="form-success-state">
-              <div className="success-icon-ring">
-                <Send className="success-icon" size={28} />
+          <div className="lego-studs-strip">
+            <span className="lego-stud-pill green" />
+            <span className="lego-stud-pill yellow" />
+            <span className="lego-stud-pill red" />
+            <span className="lego-set-code">COMMUNICATION SET</span>
+          </div>
+
+          <div className="contact-form-inner">
+            {submitStatus === 'success' ? (
+              <div className="form-success-state">
+                <div className="success-icon-ring">
+                  <Send className="success-icon" size={28} />
+                </div>
+                <h3>Message Snapped into Queue!</h3>
+                <p>Thank you for reaching out. I'll review your transmission and get back to you shortly.</p>
+                <button onClick={() => setSubmitStatus(null)} className="btn-secondary">
+                  Send Another Message
+                </button>
               </div>
-              <h3>Message Transmitted!</h3>
-              <p>Thank you for reaching out. I'll review your transmission and get back to you shortly.</p>
-              <button onClick={() => setSubmitStatus(null)} className="btn-secondary">
-                Send Another Message
-              </button>
-            </div>
-          ) : (
+            ) : (
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="input-group">
                 <label htmlFor="name">Your Name</label>
@@ -193,6 +210,7 @@ export default function Contact() {
           )}
         </div>
       </div>
+    </div>
 
       <style>{`
         .contact-section {
@@ -240,11 +258,29 @@ export default function Contact() {
         }
 
         .info-icon {
-          color: var(--accent-cyan);
           padding: 10px;
           border-radius: 12px;
-          background: rgba(0, 242, 254, 0.05);
-          border: 1px solid rgba(0, 242, 254, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .info-icon.icon-red {
+          color: var(--lego-red);
+          background: rgba(229, 37, 33, 0.12);
+          border: 1px solid rgba(229, 37, 33, 0.3);
+        }
+
+        .info-icon.icon-yellow {
+          color: var(--lego-yellow);
+          background: rgba(254, 203, 0, 0.12);
+          border: 1px solid rgba(254, 203, 0, 0.3);
+        }
+
+        .info-icon.icon-blue {
+          color: #4da3ff;
+          background: rgba(0, 85, 191, 0.18);
+          border: 1px solid rgba(0, 85, 191, 0.4);
         }
 
         .info-item span {
@@ -262,7 +298,7 @@ export default function Contact() {
         }
 
         .info-item a:hover {
-          color: var(--accent-cyan);
+          color: var(--lego-yellow);
         }
 
         .contact-socials-row {
@@ -278,16 +314,26 @@ export default function Contact() {
           justify-content: center;
           gap: 8px;
           padding: 12px;
-          border-radius: 12px !important;
-          color: var(--text-secondary);
+          border-radius: 8px !important;
+          background: #252a36;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 4px 0 #151820;
+          color: var(--text-primary);
           font-size: 14px;
-          font-weight: 500;
-          transition: border-color var(--transition-fast), color var(--transition-fast);
+          font-weight: 600;
+          transition: transform 0.1s ease, box-shadow 0.1s ease, color 0.15s ease, border-color 0.15s ease;
         }
 
         .social-btn:hover {
-          color: var(--accent-cyan);
-          border-color: rgba(0, 242, 254, 0.2);
+          color: var(--lego-yellow);
+          border-color: rgba(254, 203, 0, 0.5);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 0 #151820;
+        }
+
+        .social-btn:active {
+          transform: translateY(3px);
+          box-shadow: 0 1px 0 #151820;
         }
 
         /* Form styling */
@@ -320,9 +366,9 @@ export default function Contact() {
         }
 
         .form-input {
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(255, 255, 255, 0.03);
           border: 1px solid var(--border-color);
-          border-radius: 12px;
+          border-radius: 8px;
           padding: 14px 18px;
           color: var(--text-primary);
           font-size: 14.5px;
@@ -334,9 +380,9 @@ export default function Contact() {
         }
 
         .form-input:focus {
-          border-color: var(--accent-cyan);
-          box-shadow: 0 0 10px rgba(0, 242, 254, 0.15);
-          background: rgba(255, 255, 255, 0.04);
+          border-color: var(--lego-yellow);
+          box-shadow: 0 0 10px rgba(254, 203, 0, 0.3);
+          background: rgba(255, 255, 255, 0.05);
         }
 
         .form-textarea {
@@ -374,9 +420,9 @@ export default function Contact() {
           width: 70px;
           height: 70px;
           border-radius: 50%;
-          background: rgba(0, 242, 254, 0.05);
-          border: 2px solid var(--accent-cyan);
-          box-shadow: var(--glow-cyan);
+          background: rgba(254, 203, 0, 0.1);
+          border: 2px solid var(--lego-yellow);
+          box-shadow: 0 0 20px rgba(254, 203, 0, 0.35);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -384,7 +430,7 @@ export default function Contact() {
         }
 
         .success-icon {
-          color: var(--accent-cyan);
+          color: var(--lego-yellow);
           transform: rotate(-15deg);
         }
 

@@ -8,7 +8,7 @@ export default function Experience() {
       company: 'Sole Developer · 3 Production Applications Shipped',
       period: 'Jan 2026 – Present',
       icon: <Briefcase size={18} />,
-      color: 'var(--accent-cyan)',
+      color: 'var(--lego-yellow)',
       description: 'Independently designed, built, and deployed 3 full-stack MERN applications end-to-end — handling everything from database schema design and REST API architecture to responsive React UIs and cloud deployments on Vercel and Netlify.',
       details: [
         'Integrated two AI APIs (Google Gemini Vision, OpenAI) across projects — building structured prompt pipelines, parsing JSON responses, and wiring outputs into live product features.',
@@ -21,7 +21,7 @@ export default function Experience() {
       company: 'Aptech Learning',
       period: '2020 – 2021',
       icon: <GraduationCap size={18} />,
-      color: 'var(--accent-blue)',
+      color: 'var(--lego-blue)',
       description: 'Professional diploma program covering software development principles, core computer science concepts, database management, and programming foundations.',
       details: [
         'Studied computer science fundamentals, structured database modeling, query optimization, and application architecture.',
@@ -33,7 +33,7 @@ export default function Experience() {
       company: 'Kolhan University, Chaibasa',
       period: '2019',
       icon: <GraduationCap size={18} />,
-      color: 'var(--accent-purple)',
+      color: 'var(--lego-red)',
       description: 'Academic background cultivating deep analytical thinking, logical structured problem solving, and effective cross-functional technical communication.',
       details: [
         'Fostered advanced analytical synthesis and clear technical communication skills essential for architectural documentation and team collaboration.',
@@ -65,13 +65,12 @@ export default function Experience() {
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6, type: 'spring', stiffness: 80 }}
             >
-              {/* Timeline Dot/Icon */}
+              {/* Timeline Dot/Icon as LEGO Round Stud */}
               <div 
-                className="timeline-dot glass-panel" 
+                className="timeline-dot lego-stud-marker" 
                 style={{ 
-                  color: item.color,
-                  borderColor: item.color,
-                  boxShadow: `0 0 10px ${item.color}40`
+                  backgroundColor: item.color,
+                  boxShadow: `0 4px 0 #000000, 0 6px 16px ${item.color}60`
                 }}
               >
                 {item.icon}
@@ -79,22 +78,31 @@ export default function Experience() {
 
               {/* Timeline Box */}
               <div className="timeline-card glass-panel">
-                <div className="card-header">
-                  <div>
-                    <h3 className="role-title">{item.role}</h3>
-                    <span className="company-name">{item.company}</span>
-                  </div>
-                  <span className="period-badge">
-                    <Calendar size={12} className="cal-icon" />
-                    {item.period}
-                  </span>
+                <div className="lego-studs-strip">
+                  <span className="lego-stud-pill yellow" />
+                  <span className="lego-stud-pill red" />
+                  <span className="lego-stud-pill blue" />
+                  <span className="lego-set-code">{item.period}</span>
                 </div>
-                <p className="card-description">{item.description}</p>
-                <ul className="card-details">
-                  {item.details.map((detail, dIdx) => (
-                    <li key={dIdx}>{detail}</li>
-                  ))}
-                </ul>
+
+                <div className="timeline-card-inner">
+                  <div className="card-header">
+                    <div>
+                      <h3 className="role-title">{item.role}</h3>
+                      <span className="company-name">{item.company}</span>
+                    </div>
+                    <span className="period-badge">
+                      <Calendar size={12} className="cal-icon" />
+                      {item.period}
+                    </span>
+                  </div>
+                  <p className="card-description">{item.description}</p>
+                  <ul className="card-details">
+                    {item.details.map((detail, dIdx) => (
+                      <li key={dIdx}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -120,13 +128,14 @@ export default function Experience() {
           left: 31px;
           top: 0;
           bottom: 0;
-          width: 2px;
+          width: 4px;
           background: linear-gradient(180deg, 
-            var(--accent-cyan) 0%, 
-            var(--accent-blue) 50%, 
-            var(--accent-purple) 100%
+            var(--lego-yellow) 0%, 
+            var(--lego-blue) 50%, 
+            var(--lego-red) 100%
           );
-          opacity: 0.3;
+          border-radius: 2px;
+          opacity: 0.6;
         }
 
         .timeline-items {
@@ -140,28 +149,33 @@ export default function Experience() {
           padding-left: 80px; /* Space for the timeline node */
         }
 
-        .timeline-dot {
+        .lego-stud-marker {
           position: absolute;
           left: 12px;
           top: 18px;
-          width: 40px;
-          height: 40px;
+          width: 42px;
+          height: 42px;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--bg-secondary);
-          border: 1px solid;
+          color: #ffffff;
+          border: 2px solid rgba(255, 255, 255, 0.4);
           z-index: 5;
         }
 
         .timeline-card {
-          padding: 32px;
-          transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+          padding: 0;
+          overflow: hidden;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .timeline-card:hover {
-          border-color: rgba(255, 255, 255, 0.1);
+          transform: translateY(-4px);
+        }
+
+        .timeline-card-inner {
+          padding: 26px 30px;
         }
 
         .card-header {
@@ -170,19 +184,21 @@ export default function Experience() {
           align-items: flex-start;
           gap: 16px;
           margin-bottom: 16px;
-          border-bottom: 1px solid var(--border-color);
+          border-bottom: 2px solid rgba(0, 0, 0, 0.35);
           padding-bottom: 16px;
         }
 
         .role-title {
           font-size: 1.35rem;
-          font-weight: 700;
+          font-weight: 800;
+          color: #ffffff;
         }
 
         .company-name {
           font-size: 14px;
-          color: var(--accent-cyan);
+          color: var(--lego-yellow);
           font-family: var(--font-mono);
+          font-weight: 700;
         }
 
         .period-badge {
@@ -190,6 +206,14 @@ export default function Experience() {
           align-items: center;
           gap: 6px;
           padding: 6px 14px;
+          background: #151820;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 6px;
+          font-family: var(--font-mono);
+          font-size: 12px;
+          font-weight: 700;
+          color: var(--lego-yellow);
+        }
           background: rgba(255, 255, 255, 0.03);
           border: 1px solid var(--border-color);
           border-radius: 20px;

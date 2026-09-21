@@ -42,25 +42,35 @@ export default function About() {
       <div className="about-grid">
         {/* Bio Card */}
         <div className="about-bio glass-panel">
-          <h3>Full-Stack MERN & AI Solutions</h3>
-          <p>
-            I am a Full-Stack MERN Developer who independently designs, builds, and ships production web applications that solve real-world problems. My experience spans the entire software engineering lifecycle — from designing normalized MongoDB schemas and building secure RESTful APIs to deploying responsive React frontends.
-          </p>
-          <p>
-            I specialize in integrating AI APIs (Google Gemini Vision and OpenAI) with structured prompt engineering and JSON response validation, securing multi-tenant applications with JWT and Role-Based Access Control (RBAC), and orchestrating real-time event systems with Socket.io.
-          </p>
-          <div className="bio-stats">
-            <div className="stat-item">
-              <span className="stat-num text-gradient">3</span>
-              <span className="stat-label">Shipped Apps</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-num text-gradient">~50%</span>
-              <span className="stat-label">Prep Time Saved</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-num text-gradient">0</span>
-              <span className="stat-label">Downtime</span>
+          <div className="lego-studs-strip">
+            <span className="lego-stud-pill red" />
+            <span className="lego-stud-pill yellow" />
+            <span className="lego-stud-pill blue" />
+            <span className="lego-stud-pill green" />
+            <span className="lego-set-code">BUILDER BIO</span>
+          </div>
+
+          <div className="bio-inner-content">
+            <h3>Full-Stack MERN & AI Solutions</h3>
+            <p>
+              I am a Full-Stack MERN Developer who independently designs, builds, and ships production web applications that solve real-world problems. My experience spans the entire software engineering lifecycle — from designing normalized MongoDB schemas and building secure RESTful APIs to deploying responsive React frontends.
+            </p>
+            <p>
+              I specialize in integrating AI APIs (Google Gemini Vision and OpenAI) with structured prompt engineering and JSON response validation, securing multi-tenant applications with JWT and Role-Based Access Control (RBAC), and orchestrating real-time event systems with Socket.io.
+            </p>
+            <div className="bio-stats">
+              <div className="stat-item">
+                <span className="stat-num stat-yellow">3</span>
+                <span className="stat-label">Shipped Sets</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-num stat-red">~50%</span>
+                <span className="stat-label">Prep Time Saved</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-num stat-green">0</span>
+                <span className="stat-label">Downtime</span>
+              </div>
             </div>
           </div>
         </div>
@@ -71,7 +81,7 @@ export default function About() {
             <motion.div
               key={idx}
               className="skill-card glass-panel"
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -4 }}
               transition={{ type: 'spring', stiffness: 200 }}
             >
               <div className="skill-card-header">
@@ -80,8 +90,8 @@ export default function About() {
               </div>
               <div className="skills-list">
                 {cat.skills.map((skill, sIdx) => (
-                  <span key={sIdx} className="skill-chip">
-                    <span className="chip-dot" />
+                  <span key={sIdx} className="skill-chip lego-skill-brick">
+                    <span className="chip-stud" />
                     {skill}
                   </span>
                 ))}
@@ -125,16 +135,24 @@ export default function About() {
         }
 
         .about-bio {
-          padding: 40px;
+          padding: 0;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          height: fit-content;
+        }
+
+        .bio-inner-content {
+          padding: 30px;
           display: flex;
           flex-direction: column;
           gap: 20px;
-          height: fit-content;
         }
 
         .about-bio h3 {
           font-size: 1.8rem;
-          color: var(--text-primary);
+          color: #ffffff;
+          font-weight: 800;
         }
 
         .about-bio p {
@@ -147,9 +165,9 @@ export default function About() {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
-          margin-top: 20px;
-          border-top: 1px solid var(--border-color);
-          padding-top: 24px;
+          margin-top: 14px;
+          border-top: 2px solid rgba(0, 0, 0, 0.4);
+          padding-top: 22px;
         }
 
         .stat-item {
@@ -161,15 +179,20 @@ export default function About() {
 
         .stat-num {
           font-family: var(--font-display);
-          font-size: 1.8rem;
-          font-weight: 800;
+          font-size: 2rem;
+          font-weight: 900;
         }
+
+        .stat-num.stat-yellow { color: var(--lego-yellow); text-shadow: 0 2px 0 var(--lego-yellow-shadow); }
+        .stat-num.stat-red { color: var(--lego-red); text-shadow: 0 2px 0 var(--lego-red-shadow); }
+        .stat-num.stat-green { color: var(--lego-green); text-shadow: 0 2px 0 var(--lego-green-shadow); }
 
         .stat-label {
           font-size: 11px;
           text-transform: uppercase;
           color: var(--text-muted);
-          letter-spacing: 1px;
+          letter-spacing: 0.8px;
+          font-weight: 700;
           margin-top: 4px;
         }
 
@@ -184,10 +207,10 @@ export default function About() {
         }
 
         .skill-card {
-          padding: 30px;
+          padding: 26px;
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 18px;
         }
 
         .skill-card-header {
@@ -198,20 +221,22 @@ export default function About() {
 
         .skill-card-header h4 {
           font-size: 1.15rem;
-          font-weight: 600;
+          font-weight: 800;
+          color: #ffffff;
         }
 
         .cat-icon {
           padding: 8px;
           border-radius: 8px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: #252a36;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 2px 0 #101217;
         }
         
-        .icon-cyan { color: var(--accent-cyan); }
-        .icon-blue { color: var(--accent-blue); }
-        .icon-purple { color: var(--accent-purple); }
-        .icon-pink { color: var(--accent-violet); }
+        .icon-cyan { color: var(--lego-blue); }
+        .icon-blue { color: var(--lego-green); }
+        .icon-purple { color: var(--lego-red); }
+        .icon-pink { color: var(--lego-yellow); }
 
         .skills-list {
           display: flex;
@@ -219,35 +244,36 @@ export default function About() {
           gap: 10px;
         }
 
-        .skill-chip {
+        .lego-skill-brick {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 8px;
           padding: 6px 14px;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid var(--border-color);
-          border-radius: 20px;
-          font-size: 13px;
+          background: #252a36;
+          border: 1.5px solid rgba(255, 255, 255, 0.12);
+          border-radius: 6px;
+          font-size: 12.5px;
           font-family: var(--font-mono);
-          color: var(--text-secondary);
-          transition: all var(--transition-fast);
+          color: #f8fafc;
+          font-weight: 700;
+          box-shadow: 0 3px 0 #101217;
+          transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
         }
 
-        .skill-card:hover .skill-chip {
-          border-color: rgba(255, 255, 255, 0.1);
+        .lego-skill-brick:hover {
+          color: #ffffff;
+          border-color: var(--lego-yellow);
+          transform: translateY(-2px);
+          box-shadow: 0 5px 0 #101217;
         }
 
-        .skill-chip:hover {
-          color: var(--text-primary);
-          background: rgba(255, 255, 255, 0.05);
-          border-color: var(--accent-cyan);
-          transform: scale(1.03);
-        }
-
-        .chip-dot {
-          width: 5px;
-          height: 5px;
+        .chip-stud {
+          width: 6px;
+          height: 6px;
           border-radius: 50%;
+          background: var(--lego-yellow);
+          box-shadow: 0 0 5px var(--lego-yellow);
+        }
           background: var(--accent-cyan);
           box-shadow: var(--glow-cyan);
         }
