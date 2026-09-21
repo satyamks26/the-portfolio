@@ -74,26 +74,33 @@ export default function Hero() {
 
           {/* Compact Profile Chip */}
           <motion.div variants={itemVariants} className="hero-profile-chip glass-panel">
-            <div className="chip-avatar-wrap">
-              <img src="/profile.png" alt="Kumar Satyam" className="chip-avatar-img" />
-              <span className="status-live-dot" />
+            <div className="chip-stud-indicator">
+              <span className="lego-stud-pill yellow" />
+              <span className="lego-stud-pill green" />
+              <span className="lego-stud-pill blue" />
             </div>
-            <div className="chip-info">
-              <div className="chip-name-row">
-                <span className="chip-name">Kumar Satyam</span>
-                <span className="chip-verified">AVAILABLE IMMEDIATELY</span>
+            <div className="chip-content-wrap">
+              <div className="chip-avatar-wrap">
+                <img src="/profile.png" alt="Kumar Satyam" className="chip-avatar-img" />
+                <span className="status-live-dot" />
               </div>
-              <span className="chip-loc">Jamshedpur, IN · Open to Roles & Internships</span>
+              <div className="chip-info">
+                <div className="chip-name-row">
+                  <span className="chip-name">Kumar Satyam</span>
+                  <span className="chip-verified">AVAILABLE IMMEDIATELY</span>
+                </div>
+                <span className="chip-loc">Jamshedpur, IN · Open to Roles & Internships</span>
+              </div>
             </div>
           </motion.div>
 
           {/* Terminal Console Block */}
           <motion.div variants={itemVariants} className="hero-terminal glass-panel">
             <div className="terminal-header">
-              <span className="dot dot-red" />
-              <span className="dot dot-yellow" />
-              <span className="dot dot-green" />
-              <span className="dot dot-blue" />
+              <span className="lego-stud-pill red" />
+              <span className="lego-stud-pill yellow" />
+              <span className="lego-stud-pill green" />
+              <span className="lego-stud-pill blue" />
               <span className="terminal-title">master-builder.sh · v3.0.0</span>
             </div>
             <div className="terminal-body">
@@ -119,11 +126,11 @@ export default function Hero() {
         <div 
           className="hero-stage-canvas-spacer interactive"
           onClick={toggleLegoExplode}
-          title="Click to Explode / Reassemble LEGO Bricks"
+          title="Click to Break and Snap LEGO Bricks!"
         >
           <div className="hero-3d-hint-pill">
             <span className="hint-brick-dot" />
-            <span>Click 3D Bricks to Explode & Snap!</span>
+            <span>Click Anywhere: Bricks Break & Snap!</span>
           </div>
         </div>
       </div>
@@ -235,11 +242,26 @@ export default function Hero() {
         /* Profile Mini Chip */
         .hero-profile-chip {
           display: flex;
+          flex-direction: column;
+          border-radius: 12px !important;
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .chip-stud-indicator {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: #11131a;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+        }
+
+        .chip-content-wrap {
+          display: flex;
           align-items: center;
           gap: 14px;
           padding: 10px 16px;
-          border-radius: 12px !important;
-          width: 100%;
         }
 
         .chip-avatar-wrap {

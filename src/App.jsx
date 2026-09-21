@@ -1,5 +1,6 @@
 import CustomCursor from './components/CustomCursor';
 import MainCanvas from './components/Canvas/MainCanvas';
+import LegoBreakFx from './components/LegoBreakFx';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,6 +13,9 @@ export default function App() {
     <>
       {/* Lagging Custom Cursor for high-end feel */}
       <CustomCursor />
+
+      {/* Interactive Screen-Space LEGO Break & Snap FX */}
+      <LegoBreakFx />
 
       {/* Persistent 3D Interactive Canvas background */}
       <MainCanvas />

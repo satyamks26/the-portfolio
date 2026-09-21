@@ -6,26 +6,41 @@ export default function About() {
     {
       title: 'Frontend & Responsive UI',
       icon: <Layers size={22} className="cat-icon icon-purple" />,
+      colorTheme: 'blue',
+      studColor: 'blue',
+      brickCode: 'FRONTEND · 2x4 BLUE BRICK',
       skills: ['React.js', 'HTML5 & CSS3', 'Tailwind CSS', 'Responsive UI Design', 'JavaScript (ES6+)'],
     },
     {
       title: 'Backend & System Architecture',
       icon: <Server size={22} className="cat-icon icon-cyan" />,
+      colorTheme: 'red',
+      studColor: 'red',
+      brickCode: 'BACKEND · 2x4 RED BRICK',
       skills: ['Node.js', 'Express.js', 'RESTful API Design', 'Socket.io', 'Event-Driven Architecture'],
     },
     {
       title: 'AI Integration & Pipelines',
       icon: <Sparkles size={22} className="cat-icon icon-pink" />,
+      colorTheme: 'yellow',
+      studColor: 'yellow',
+      brickCode: 'AI PIPELINES · 2x4 YELLOW BRICK',
       skills: ['Google Gemini Vision API', 'OpenAI API', 'Structured Prompt Pipelines', 'JSON Response Parsing'],
     },
     {
       title: 'Database & Auth Security',
       icon: <ShieldCheck size={22} className="cat-icon icon-blue" />,
+      colorTheme: 'green',
+      studColor: 'green',
+      brickCode: 'DATABASE · 2x4 GREEN BRICK',
       skills: ['MongoDB & Mongoose', 'Schema Design & Query Optimization', 'JWT Authentication', 'RBAC (Role-Based Access)'],
     },
     {
       title: 'Tools, DevOps & Fundamentals',
       icon: <Cpu size={22} className="cat-icon icon-cyan" />,
+      colorTheme: 'orange',
+      studColor: 'orange',
+      brickCode: 'DEVOPS · 2x4 ORANGE BRICK',
       skills: ['Git & GitHub Branching', 'Postman API', 'Vercel & Netlify Deployment', 'Cloudinary Media Storage', 'Data Structures & Algorithms'],
     },
   ];
@@ -80,21 +95,30 @@ export default function About() {
           {skillCategories.map((cat, idx) => (
             <motion.div
               key={idx}
-              className="skill-card glass-panel"
+              className={`skill-card glass-panel brick-theme-${cat.colorTheme}`}
               whileHover={{ y: -4 }}
               transition={{ type: 'spring', stiffness: 200 }}
             >
-              <div className="skill-card-header">
-                {cat.icon}
-                <h4>{cat.title}</h4>
+              <div className="lego-studs-strip">
+                <span className={`lego-stud-pill ${cat.studColor}`} />
+                <span className={`lego-stud-pill ${cat.studColor}`} />
+                <span className={`lego-stud-pill ${cat.studColor}`} />
+                <span className={`lego-stud-pill ${cat.studColor}`} />
+                <span className="lego-set-code">{cat.brickCode}</span>
               </div>
-              <div className="skills-list">
-                {cat.skills.map((skill, sIdx) => (
-                  <span key={sIdx} className="skill-chip lego-skill-brick">
-                    <span className="chip-stud" />
-                    {skill}
-                  </span>
-                ))}
+              <div className="skill-card-body">
+                <div className="skill-card-header">
+                  {cat.icon}
+                  <h4>{cat.title}</h4>
+                </div>
+                <div className="skills-list">
+                  {cat.skills.map((skill, sIdx) => (
+                    <span key={sIdx} className="skill-chip lego-skill-brick">
+                      <span className="chip-stud" />
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
@@ -207,10 +231,17 @@ export default function About() {
         }
 
         .skill-card {
-          padding: 26px;
+          padding: 0;
           display: flex;
           flex-direction: column;
-          gap: 18px;
+          overflow: hidden;
+        }
+
+        .skill-card-body {
+          padding: 22px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
         }
 
         .skill-card-header {

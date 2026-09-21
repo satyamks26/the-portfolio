@@ -78,7 +78,9 @@ export default function Projects() {
           <span className="lego-stud-pill yellow" />
           <span className="lego-stud-pill blue" />
           <span className="lego-stud-pill green" />
-          <span className="lego-set-code">SET #{index + 1}00 · MASTER BUILDER</span>
+          <span className="lego-stud-pill yellow" />
+          <span className="lego-stud-pill red" />
+          <span className="lego-set-code">COLLECTOR SET #{index + 1}00</span>
         </div>
 
         <div className="card-image-wrap">
